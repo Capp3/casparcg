@@ -19,7 +19,7 @@
 - name: Extract Caspar
   ansible.builtin.unarchive:
     src: /tmp/casparcg.zip
-    dest: { { casparcg_install_dir } }
+    dest: { { casparcg_install_path } }
     remote_src: yes
     owner: { { casparcg_user } }
     group: { { casparcg_user } }

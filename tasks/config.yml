@@ -1,0 +1,5 @@
+- name: Remove file (delete file)
+  ansible.builtin.file:
+    path: { { casparcg_install_path } }/casparcg_server/casparcg.config
+    state: absent
+
