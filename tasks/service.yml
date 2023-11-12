@@ -1,0 +1,6 @@
+- name: Start as a service
+  ansible.builtin.service:
+    name: casparcgserver
+    pattern: /home/{ { casparcg_user } }/casparcg_server/caspar
+    state: started
+    enabled: yes

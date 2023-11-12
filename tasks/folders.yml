@@ -1,0 +1,12 @@
+- name: Create necessary directories
+  ansible.builtin.file:
+    path: { { item } }
+    state: directory
+    mode: "0775"
+    owner: { { casparcg_user } }
+    group: { { casparcg_user } }
+  loop:
+    - { { casparcg_install_path } }
+    - { { media_path } }
+    - { { data_path } }
+    - { { log_path } }

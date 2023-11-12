@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <paths>
+        <media-path>{{ media_path }}</media-path>
+        <log-path disable="false">{{ log_path }}</log-path>
+        <data-path>{{ data_path }}</data-path>
+        <template-path>{{ template_path }}</template-path>
+    </paths>
+    <lock-clear-phrase>{{ casparcg_gui_password }}</lock-clear-phrase>
+    <channels>
+        <channel>
+            <video-mode>{{ casparcg_output_resolution }}</video-mode>
+            <consumers>
+                <screen />
+                <system-audio />
+            </consumers>
+        </channel>
+    </channels>
+    <controllers>
+        <tcp>
+            <port>5250</port>
+            <protocol>AMCP</protocol>
+        </tcp>
+    </controllers>
+    <amcp>
+        <media-server>
+            <host>localhost</host>
+            <port>8000</port>
+        </media-server>
+    </amcp>
+</configuration>
+<log-level> info  [trace|debug|info|warning|error|fatal]</log-level>
+<log-align-columns>true [true|false]</log-align-columns>
+<template-hosts>
+    <template-host>
+        <video-mode />
+        <filename />
+        <width />
+        <height />
+    </template-host>
+</template-hosts>
+<flash>
+    <enabled>false</enabled>
+</flash>
+<ffmpeg>
+    <producer>
+        <auto-deinterlace>interlaced</auto-deinterlace>
+        <threads>4</threads>
+    </producer>
+</ffmpeg>
+<html>
+    <remote-debugging-port>9280</remote-debugging-port>
+    <enable-gpu>false</enable-gpu>
+</html>
+<system-audio>
+    <producer>
+        <default-device-name></default-device-name>
+    </producer>
+</system-audio>
+<ndi>
+    <auto-load>false [true|false]</auto-load>
+</ndi>
+<channels>
+    <channel>
+        <video-mode>PAL [PAL|NTSC|576p2500|720p2398|720p2400|720p2500|720p5000|720p2997|720p5994|720p3000|720p6000|1080p2398|1080p2400|1080i5000|1080i5994|1080i6000|1080p2500|1080p2997|1080p3000|1080p5000|1080p5994|1080p6000|1556p2398|1556p2400|1556p2500|dci1080p2398|dci1080p2400|dci1080p2500|2160p2398|2160p2400|2160p2500|2160p2997|2160p3000|2160p5000|2160p5994|2160p6000|dci2160p2398|dci2160p2400|dci2160p2500] </video-mode>
+        <consumers>
+            <system-audio>
+                <channel-layout>stereo [mono|stereo|matrix]</channel-layout>
+                <latency>200 [0..]</latency>
+            </system-audio>
+            <screen>
+                <device>1 [1..]</device>
+                <aspect-ratio>default [default|4:3|16:9]</aspect-ratio>
+                <stretch>fill [none|fill|uniform|uniform_to_fill]</stretch>
+                <windowed>false [true|false]</windowed>
+                <key-only>false [true|false]</key-only>
+                <vsync>false [true|false]</vsync>
+                <borderless>false [true|false]</borderless>
+                <interactive>true [true|false]</interactive>
+                <always-on-top>false [true|false]</always-on-top>
+                <x>0</x>
+                <y>0</y>
+                <width>1920</width>
+                <height>1080</height>
+                <sbs-key>false [true|false]</sbs-key>
+                <colour-space>RGB</colour-space>
+            </screen>
+            </ndi>
+        </consumers>
+        <producers>
+            <producer id="0">AMB LOOP</producer>
+        </producers>
+    </channel>
+</channels>
+<osc>
+  <default-port>6250</default-port>
+  <disable-send-to-amcp-clients>false</disable-send-to-amcp-clients>
+  <predefined-clients>
+    <predefined-client>
+      <address>127.0.0.1</address>
+      <port>5253</port>
+    </predefined-client>
+  </predefined-clients>
+</osc>

@@ -1,0 +1,33 @@
+#### Install System Dependencies
+- name: Install Required Packages
+  ansible.builtin.apt:
+    name: { { item } }
+    state: present
+  loop: { { casparcg_apt_packages } }
+
+- name: Create necessary directories
+  ansible.builtin.include_tasks:
+    file: folders.yml
+
+#### Clone CasparCG
+- name: Download CasparCG Server
+  ansible.builtin.get_url: 
+    url: { { casparcg_download } }
+    dest: /tmp/casparcg.zip
+    mode: '0775'
+
+- name: Extract Caspar
+  ansible.builtin.unarchive:
+    src: /tmp/casparcg.zip
+    dest: { { casparcg_install_dir } }
+    remote_src: yes
+    owner: { { casparcg_user } }
+    group: { { casparcg_user } }
+
+- name: Caspar Configuration File from Template
+  ansible.builtin.include_tasks:
+    file: config.yml
+
+- name: Configure CasparCG as a Service
+  ansible.builtin.include_tasks:
+    file: service.yml
