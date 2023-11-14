@@ -1,5 +1,12 @@
-- name: Remove file (delete file)
+- name: Remove config (delete file)
   ansible.builtin.file:
-    path: { { casparcg_install_path } }/casparcg_server/casparcg.config
+    path: "{ { casparcg_install_path } }/casparcg_server/casparcg.config"
     state: absent
 
+- name: create config from template
+  ansible.builtin.template:
+    src: casparcg.config.j2
+    dest: "{ { casparcg_install_path } }/casparcg_server/casparcg.config"
+    owner: { { casparcg_user } }
+    group: { { casparcg_user } }
+    mode: '0775'

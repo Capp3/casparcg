@@ -1,6 +1,13 @@
+- name: Create CasparCG service file
+  ansible.builtin.template:
+    src: casparcg.service.j2
+    dest: /etc/systemd/system/casparcg.service
+    owner: { { casparcg_user } }
+    group: { { casparcg_user } }
+    mode: "0755"
+
 - name: Start as a service
   ansible.builtin.service:
-    name: casparcgserver
-    pattern: /home/{ { casparcg_user } }/casparcg_server/caspar
+    name: casparcg.service
     state: started
     enabled: yes
